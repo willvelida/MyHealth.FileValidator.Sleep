@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHealth.FileValidator.Sleep", "MyHealth.FileValidator.Sleep\MyHealth.FileValidator.Sleep.csproj", "{44C22BA2-79C3-45ED-BC27-7278F862AE8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHealth.FileValidator.Sleep", "MyHealth.FileValidator.Sleep\MyHealth.FileValidator.Sleep.csproj", "{44C22BA2-79C3-45ED-BC27-7278F862AE8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHealth.FileValidator.Sleep.UnitTests", "MyHealth.FileValidator.Sleep.UnitTests\MyHealth.FileValidator.Sleep.UnitTests.csproj", "{EDEF99F9-9368-4500-A78A-965B91AD4AB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{44C22BA2-79C3-45ED-BC27-7278F862AE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C22BA2-79C3-45ED-BC27-7278F862AE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C22BA2-79C3-45ED-BC27-7278F862AE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEF99F9-9368-4500-A78A-965B91AD4AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEF99F9-9368-4500-A78A-965B91AD4AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEF99F9-9368-4500-A78A-965B91AD4AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEF99F9-9368-4500-A78A-965B91AD4AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
