@@ -38,19 +38,27 @@ namespace MyHealth.FileValidator.Sleep.Parsers
                         {
                             StartTime = DateTime.ParseExact(csv.GetField("Start Time"), "d/MM/yyyy H:mm", null),
                             EndTime = DateTime.ParseExact(csv.GetField("End Time"), "d/MM/yyyy H:mm", null),
-                            MinutesAsleep = int.Parse(csv.GetField("Minutes Asleep")),
-                            MinutesAwake = int.Parse(csv.GetField("Minutes Awake")),
-                            NumberOfAwakenings = int.Parse(csv.GetField("Number of Awakenings")),
-                            TimeInBed = int.Parse(csv.GetField("Time in Bed")),
-                            MinutesREMSleep = int.Parse(csv.GetField("Minutes REM Sleep")),
-                            MinutesLightSleep = int.Parse(csv.GetField("Minutes Light Sleep")),
-                            MinutesDeepSleep = int.Parse(csv.GetField("Minutes Deep Sleep"))
+                            MinutesAsleep = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Asleep"))),
+                            MinutesAwake = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Awake"))),
+                            NumberOfAwakenings = int.Parse(ConvertNaNToZero(csv.GetField("Number of Awakenings"))),
+                            TimeInBed = int.Parse(ConvertNaNToZero(csv.GetField("Time in Bed"))),
+                            MinutesREMSleep = int.Parse(ConvertNaNToZero(csv.GetField("Minutes REM Sleep"))),
+                            MinutesLightSleep = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Light Sleep"))),
+                            MinutesDeepSleep = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Deep Sleep")))
                         };
 
                         await _serviceBusHelpers.SendMessageToTopic(_configuration["SleepTopic"], sleep);
                     }
                 }
             }
+        }
+
+        private string ConvertNaNToZero(string csvField)
+        {
+            if (csvField == "N/A")          
+                csvField = "0";
+
+            return csvField;
         }
     }
 }
