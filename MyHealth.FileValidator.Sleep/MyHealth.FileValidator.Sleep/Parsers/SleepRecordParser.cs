@@ -38,7 +38,7 @@ namespace MyHealth.FileValidator.Sleep.Parsers
                         {
                             StartTime = DateTime.ParseExact(csv.GetField("Start Time"), "d/MM/yyyy H:mm", null),
                             EndTime = DateTime.ParseExact(csv.GetField("End Time"), "d/MM/yyyy H:mm", null),
-                            ActivityDate = DateTime.ParseExact(csv.GetField("Start Time"), "d/MM/yyyy H:mm", null).ToString("d/MM/yyyy"),
+                            SleepDate = DateTime.ParseExact(csv.GetField("Start Time"), "d/MM/yyyy H:mm", null).ToString("d/MM/yyyy"),
                             MinutesAsleep = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Asleep"))),
                             MinutesAwake = int.Parse(ConvertNaNToZero(csv.GetField("Minutes Awake"))),
                             NumberOfAwakenings = int.Parse(ConvertNaNToZero(csv.GetField("Number of Awakenings"))),
