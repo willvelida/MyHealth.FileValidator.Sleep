@@ -15,17 +15,20 @@ namespace MyHealth.FileValidator.Sleep.Functions
         private readonly IConfiguration _configuration;
         private readonly IAzureBlobHelpers _azureBlobHelpers;
         private readonly ISleepRecordParser _sleepRecordParser;
+        private readonly IServiceBusHelpers _serviceBusHelpers;
         private readonly ITableHelpers _tableHelpers;
 
         public ValidateIncomingSleepFile(
             IConfiguration configuration,
             IAzureBlobHelpers azureBlobHelpers,
             ISleepRecordParser sleepRecordParser,
+            IServiceBusHelpers serviceBusHelpers,
             ITableHelpers tableHelpers)
         {
             _configuration = configuration;
             _azureBlobHelpers = azureBlobHelpers;
             _sleepRecordParser = sleepRecordParser;
+            _serviceBusHelpers = serviceBusHelpers;
             _tableHelpers = tableHelpers;
         }
 
@@ -67,6 +70,7 @@ namespace MyHealth.FileValidator.Sleep.Functions
             catch (Exception ex)
             {
                 log.LogError($"Exception thrown in {nameof(ValidateIncomingSleepFile)}. Exception: {ex}");
+                await _serviceBusHelpers.SendMessageToQueue(_configuration["ExceptionQueue"], ex);
                 throw ex;
             }
         }

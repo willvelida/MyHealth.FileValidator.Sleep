@@ -56,7 +56,7 @@ namespace MyHealth.FileValidator.Sleep.Parsers
 
         private string ConvertNaNToZero(string csvField)
         {
-            if (csvField == "N/A")          
+            if (csvField == "N/A")
                 csvField = "0";
 
             return csvField;
