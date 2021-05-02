@@ -77,5 +77,19 @@ namespace MyHealth.FileValidator.Sleep.UnitTests.ParserTests
             await parseAction.Should().NotThrowAsync<Exception>();
             _mockServiceBusHelpers.Verify(sb => sb.SendMessageToTopic(It.IsAny<string>(), It.IsAny<mdl.Sleep>()), Times.Once);
         }
+
+        [Fact]
+        public async Task ParseFileSuccessfullyIfIntFieldIsSetToNA()
+        {
+            // Arrange
+            StreamReader streamReader = new StreamReader("TestDataNA.csv");
+
+            // Act
+            Func<Task> parseAction = async () => await _sut.ParseSleepStream(streamReader.BaseStream);
+
+            // Assert
+            await parseAction.Should().NotThrowAsync<Exception>();
+            _mockServiceBusHelpers.Verify(sb => sb.SendMessageToTopic(It.IsAny<string>(), It.IsAny<mdl.Sleep>()), Times.Once);
+        }
     }
 }
