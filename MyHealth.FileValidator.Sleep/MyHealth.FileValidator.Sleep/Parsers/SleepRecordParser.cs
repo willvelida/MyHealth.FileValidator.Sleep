@@ -58,7 +58,7 @@ namespace MyHealth.FileValidator.Sleep.Parsers
             catch (Exception ex)
             {
                 throw ex;
-            }          
+            }
         }
 
         private string ConvertNaNToZero(string csvField)

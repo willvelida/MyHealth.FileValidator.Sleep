@@ -1,13 +1,10 @@
-﻿using CsvHelper;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using MyHealth.Common;
 using MyHealth.FileValidator.Sleep.Parsers;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +36,7 @@ namespace MyHealth.FileValidator.Sleep.UnitTests.ParserTests
         public async Task ThrowExceptionWhenStreamStartFails()
         {
             // Arrange
-            _mockStream.Setup(x => x.Seek(It.IsAny<long>(), It.IsAny<SeekOrigin>())).Throws(new Exception());            
+            _mockStream.Setup(x => x.Seek(It.IsAny<long>(), It.IsAny<SeekOrigin>())).Throws(new Exception());
 
             // Act
             Func<Task> parserAction = async () => await _sut.ParseSleepStream(_mockStream.Object);
